@@ -5,6 +5,6 @@ module Api
         def index
             render json: { message: "Pong" }
             end
-        end
+    end
     end
 end

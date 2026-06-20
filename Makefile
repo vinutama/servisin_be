@@ -1,4 +1,4 @@
-.PHONY: build-dev up-dev down-dev logs-dev shell-dev cnetwork init-rails-app fresh-start-dev bundle-install bundle-add
+.PHONY: build-dev up-dev down-dev logs-dev shell-dev cnetwork init-rails-app fresh-start-dev bundle-install bundle-add fix-lint
 
 build-dev:
 	docker compose build
@@ -43,7 +43,7 @@ init-rails-app:
 			apt-get install -y --no-install-recommends build-essential libpq-dev curl git && \
 			curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 			apt-get install -y --no-install-recommends nodejs && \
-			gem install rails -v '~> 7.1' && \
+			gem install rails -v '~> 8.0' && \
 			rails new . --force \
 				--database=postgresql \
 				--skip-test \
@@ -51,6 +51,9 @@ init-rails-app:
 				--skip-git \
 				--asset-pipeline=propshaft \
 				--javascript=esbuild"
+
+fix-lint:
+	docker compose exec servisin-app-be bundle exec rubocop -A
 
 fresh-start-dev:
 	make build-dev && \

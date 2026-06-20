@@ -3,7 +3,7 @@ class UserSerializer
     def initialize(user)
       @user = user
     end
-  
+
     def as_json(*)
       {
         id: @user.id,
@@ -14,4 +14,4 @@ class UserSerializer
         updated_at: @user.updated_at
       }
     end
-  end
+end
