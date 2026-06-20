@@ -1,28 +1,24 @@
-# Servisin App
+# README
 
-Servisin App helps you keep track of your registered vehicles and stay on top of important dates and maintenance. Store vehicle details in one place and get a clear view of upcoming services and tax obligations.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Features
+Things you may want to cover:
 
-- **Vehicle registry** — Add and manage your registered vehicles with key details in a single dashboard.
-- **Service tracking** — Record service history and monitor upcoming maintenance so nothing slips through the cracks.
-- **Tax due dates** — Track tax deadlines per vehicle and avoid missed payments or penalties.
+* Ruby version
 
-## Why Servisin?
+* System dependencies
 
-Owning one or more vehicles means juggling registration, routine service, and recurring tax deadlines. Servisin App brings that information together so you can see what needs attention and when.
+* Configuration
 
-## Getting Started
+* Database creation
 
-Setup and installation instructions will be added as the project evolves.
+* Database initialization
 
-## Roadmap
+* How to run the test suite
 
-- Vehicle management (add, edit, remove)
-- Service logs and reminders
-- Tax due date tracking and notifications
-- Dashboard overview of upcoming items
+* Services (job queues, cache servers, search engines, etc.)
 
-## License
+* Deployment instructions
 
-This project is licensed under the [MIT License](LICENSE).
+* ...

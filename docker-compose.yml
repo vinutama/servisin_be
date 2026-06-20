@@ -1,0 +1,62 @@
+services:
+  servisin-db:
+    container_name: servisin-db
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - servisin-network
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - servisin-network
+
+  servisin-app-be:
+    container_name: servisin-app-be
+    build: .
+    command: [ "bundle", "exec", "rails", "server", "-b", "0.0.0.0" ]
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle # persists gems across rebuilds
+      - rails_storage:/app/storage # Active Storage uploads survive container recreation
+    ports:
+      - "3002:3002"
+    env_file:
+      - .env
+    depends_on:
+      servisin-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    networks:
+      - servisin-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  bundle_cache:
+  rails_storage:
+networks:
+  servisin-network:
+    external: true
