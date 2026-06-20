@@ -25,4 +25,4 @@ Setup and installation instructions will be added as the project evolves.
 
 ## License
 
-To be determined.
+This project is licensed under the [MIT License](LICENSE).
