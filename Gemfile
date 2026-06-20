@@ -25,7 +25,7 @@ gem "bcrypt", "~> 3.1.7"
 
 gem "jwt"                    # any gem name
 gem "rack-cors"              # another example
-gem "pagy", "~> 9.0"         # with version constraint
+gem "pagy", "~> 43.5"        # with version constraint
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
